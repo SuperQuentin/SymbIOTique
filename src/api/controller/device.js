@@ -50,3 +50,32 @@ module.exports.find = (req,res) =>
         }
     })
 }
+
+module.exports.create = (req,res) =>
+{
+    const device = new Device({
+        _id: new mongoose.Types.ObjectId(),
+        ...req.body
+    })
+
+    console.log(device)
+
+    device
+    .save((err, doc) => {
+        if (doc) {
+            console.log(doc),
+             res.status(200).json({
+                createdDevice : doc
+            })
+        }
+        if (err) {
+            console.error(err)
+            if(err.code === 11000){
+                res.status(500).json({error: "device already existe with the same mqtt client id"})
+            }
+            else {
+                res.status(500).json({error: 'device hasn\'t been create'})
+            }
+        }
+    })
+}
