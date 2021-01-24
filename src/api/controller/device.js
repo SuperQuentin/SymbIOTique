@@ -64,7 +64,7 @@ module.exports.create = (req,res) =>
     .save((err, doc) => {
         if (doc) {
             console.log(doc),
-             res.status(200).json({
+            res.status(200).json({
                 createdDevice : doc
             })
         }
@@ -85,7 +85,7 @@ module.exports.update = (req,res) =>
     Device.findOneAndUpdate({_id: req.body.id}, req.body, {new: true},(err, doc) => {
         if (doc) {
             console.log(doc)
-             res.status(200).json({
+            res.status(200).json({
                 updatedDevice : doc
             })
         }
@@ -93,6 +93,31 @@ module.exports.update = (req,res) =>
             console.error(err)
             if(err){
                 res.status(500).json({error: 'device hasn\'t been update'})
+            }
+        }
+    })
+}
+
+module.exports.delete = (req,res) =>
+{
+    Device.deleteOne({_id: req.body.id}, (err, doc) => {
+        if (doc) {
+            console.log(doc)
+            if (doc.deletedCount === 1) {
+                res.status(200).json({
+                    message : `device ${req.body.id} has been delete`
+                })
+            }
+            else {
+                res.status(404).json({
+                    error: 'device not found'
+                })
+            }
+        }
+        if (err) {
+            console.error(err)
+            if(err){
+                res.status(500).json({error: 'an error occurred during the delete'})
             }
         }
     })
