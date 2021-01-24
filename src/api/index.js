@@ -1,7 +1,7 @@
 const {Router}  = require('express')
-const devices = require('./routes/devices')
+const device = require('./routes/device')
 
 const app = Router()
-app.use('/device', devices)
+app.use('/device', device)
 
 module.exports = app;
