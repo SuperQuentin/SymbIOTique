@@ -84,7 +84,7 @@ module.exports.update = (req,res) =>
 {
     Device.findOneAndUpdate({_id: req.body.id}, req.body, {new: true},(err, doc) => {
         if (doc) {
-            console.log(doc),
+            console.log(doc)
              res.status(200).json({
                 updatedDevice : doc
             })
