@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/SuperQuentin/symbIOTique#readme",
   "dependencies": {
+    "aedes": "^0.44.1",
+    "aedes-authorization-plugin": "^1.0.2",
+    "aedes-persistence": "^8.1.1",
+    "aedes-persistence-mongodb": "^8.1.2",
     "celebrate": "^13.0.4",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
