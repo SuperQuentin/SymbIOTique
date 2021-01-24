@@ -79,3 +79,21 @@ module.exports.create = (req,res) =>
         }
     })
 }
+
+module.exports.update = (req,res) =>
+{
+    Device.findOneAndUpdate({_id: req.body.id}, req.body, {new: true},(err, doc) => {
+        if (doc) {
+            console.log(doc),
+             res.status(200).json({
+                updatedDevice : doc
+            })
+        }
+        if (err) {
+            console.error(err)
+            if(err){
+                res.status(500).json({error: 'device hasn\'t been update'})
+            }
+        }
+    })
+}
