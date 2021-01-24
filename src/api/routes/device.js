@@ -16,6 +16,7 @@ routes.post('/', celebrate({
         description: Joi.string().optional(),
         brand: Joi.string().optional(),
         model: Joi.string().optional(),
+        topics: Joi.array().items(Joi.string()).required(),
     })
 }),
 (req, res) => {
@@ -30,6 +31,7 @@ routes.post('/update', celebrate({
         description: Joi.string().optional(),
         brand: Joi.string().optional(),
         model: Joi.string().optional(),
+        topics: Joi.array().items(Joi.string()).optional(),
     })
 }),
 (req, res) => {

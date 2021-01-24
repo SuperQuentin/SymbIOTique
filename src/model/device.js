@@ -9,6 +9,9 @@ const Device = new mongoose.Schema(
     salt: { type: String },
     brand: { type: String, required: false, default: 'generic'},
     model: { type: String, required: false, default: 'symb-101'},
+    topics: [
+      { type: String, required: true, default: 'sandbox'}
+    ]
   },
   { timestamps: true }
 )
